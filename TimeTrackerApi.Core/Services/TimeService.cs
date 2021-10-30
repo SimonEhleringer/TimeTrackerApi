@@ -55,6 +55,7 @@ namespace TimeTrackerApi.Core.Services
                 .Where(t => t.Description.Contains(filter != null ? filter : string.Empty))
                 .Skip(numberOfRecordsToSkip)
                 .Take(pageLength)
+                .OrderByDescending(t => t.Id)
                 .ToListAsync();
         }
     }
