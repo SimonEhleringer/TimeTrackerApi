@@ -53,9 +53,9 @@ namespace TimeTrackerApi.Core.Services
 
             return await _dbContext.Times.AsNoTracking()
                 .Where(t => t.Description.Contains(filter != null ? filter : string.Empty))
+                .OrderByDescending(t => t.EndTime)
                 .Skip(numberOfRecordsToSkip)
                 .Take(pageLength)
-                .OrderByDescending(t => t.Id)
                 .ToListAsync();
         }
     }
